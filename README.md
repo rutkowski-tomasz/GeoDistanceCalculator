@@ -2,7 +2,7 @@
 
 # Roadmap:
 
-1. Create README.md + roadmap
+1. ~~Create README.md + roadmap~~
 2. Initialize project, install required dependencies
 3. Implement logic of distance calculation
 4. Create frontend application to showcase API endpoint
