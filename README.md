@@ -43,7 +43,7 @@ Web API and client application are separate projects and should be started separ
 8. Implement multiple methods to calculate the distance
 9. Consider different required units
 10. ~~Stylize frontend solution (use third party library)~~
-11. Validate form before sending the request
+11. ~~Validate form before sending the request~~
 12. Create BDD tests (Specflow)
 13. Prepare solution for kubernetes deployment
 14. ~~Write starting instructions~~

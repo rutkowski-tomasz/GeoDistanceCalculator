@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
-import { catchError, debounceTime, finalize, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, debounceTime, filter, map, startWith, switchMap } from 'rxjs/operators';
 import { HttpRequestState } from '../common/http-request-state';
 import { CalculateGeoDistanceRequest } from '../models/calculate-geo-distance-request';
 import { GeoDistanceClientService } from '../services/geo-distance-client.service';
@@ -24,23 +24,17 @@ export class GeoDistanceCalculateComponent implements OnInit {
     public ngOnInit(): void {
 
         this.geoDistanceForm = new FormGroup({
-            locationALatitude: new FormControl(53.297975),
-            locationALongitude: new FormControl(-6.372663),
-            locationBLatitude: new FormControl(41.385101),
-            locationBLongitude: new FormControl(-81.440440),
+            locationALatitude: new FormControl(53.297975, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
+            locationALongitude: new FormControl(-6.372663, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
+            locationBLatitude: new FormControl(41.385101, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
+            locationBLongitude: new FormControl(-81.440440, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
         });
 
         this.distance$ = this.geoDistanceForm.valueChanges.pipe(
-            // tap(_ => console.log('asdaa')),
+            startWith(this.geoDistanceForm.value),
             debounceTime(250),
-            // tap(_ => console.log('asd')),
+            filter(_ => this.geoDistanceForm.valid),
             map(formValues => this.buildCalculateGeoDistanceRequest(formValues)),
-            // tap(_ => this.isLoading$.next(true)),
-            // switchMap(query => this.client.calculate(query).pipe(
-            //     tap(_ => console.log('test')),
-            //     tap(() => this.isLoading$.next(false))
-            // )),
-
             switchMap(query => this.client.calculate(query).pipe(
                 map((value) => ({isLoading: false, value})),
                 catchError(error => of({isLoading: false, error})),
