@@ -26,7 +26,7 @@ Web API and client application are separate projects and should be started separ
 - [ValueOf](https://github.com/mcintyre321/ValueOf)
 
 ## Frontend package dependencies
-- TODO
+- [Angular Material](https://material.angular.io/)
 
 ## Notes
 1. Web API and client application are separate projects and can be deployed separately. It would be better to place them in other repositories. They are placed in one repository because of demo purpose.
