@@ -47,7 +47,7 @@ Web API and client application are separate projects and should be started separ
 12. Create BDD tests (Specflow)
 13. Prepare solution for kubernetes deployment
 14. ~~Write starting instructions~~
-15. Enable swagger
+15. ~~Enable swagger~~
 16. Implement mappers
 17. Integrate with docker-compose for single command project startup
 18. Generate API client for angular on build

@@ -15,10 +15,12 @@ public class Startup
     {
         services.AddControllers();
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
+        services.AddSwaggerGen(options =>
+        {
+            options.EnableAnnotations();
+        });
         services.AddCors();
         services.AddInfrastructure();
-        
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

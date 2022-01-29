@@ -3,21 +3,15 @@ using Ardalis.ApiEndpoints;
 using Domain.Entities;
 using Domain.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Application.Endpoints.GeoDistance;
 
 public class CalculateGeoDistanceRequest
 {
-    [FromBody]
     public double LocationALatitude { get; set; }
-    
-    [FromBody]
     public double LocationALongitude { get; set; }
-    
-    [FromBody]
     public double LocationBLatitude { get; set; }
-    
-    [FromBody]
     public double LocationBLongitude { get; set; }
 }
 
@@ -33,7 +27,13 @@ public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
     }
 
     [HttpPost("geo-distance/calculate")]
-    public override async Task<double> HandleAsync(CalculateGeoDistanceRequest request, CancellationToken cancellationToken = new CancellationToken())
+    [SwaggerOperation(
+        Summary = "Calculates a distance",
+        Description = "Calculates a distance between given geographical points",
+        OperationId = "GeoDistance.Calculate",
+        Tags = new [] { "GeoDistance" }
+    )]
+    public override async Task<double> HandleAsync([FromBody] CalculateGeoDistanceRequest request, CancellationToken cancellationToken = new CancellationToken())
     {
         var locationA = new GeoLocation
         {
