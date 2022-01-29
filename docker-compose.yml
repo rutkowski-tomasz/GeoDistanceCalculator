@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  geodistancecalculator-webapi:
+    image: geodistancecalculator-webapi
+    container_name: geodistancecalculator-webapi
+    build:
+      context: .
+      dockerfile: src/Api/Dockerfile
+    ports:
+      - 6000:80
+      - 6001:443
+
+  geodistancecalculator-clientapp:
+     image: geodistancecalculator-clientapp
+     container_name: geodistancecalculator-clientapp
+     build: src/ClientApp
+     ports:
+       - 80:80
