@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "items", "items", "{011A1D71
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Tests.Unit", "tests\Infrastructure.Tests.Unit\Infrastructure.Tests.Unit.csproj", "{9501173D-2B61-4906-B9DC-F7962992AC78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,7 @@ Global
 		{F92B3827-2593-4292-98E5-D41EC96696A6} = {AC3021C9-1610-4C52-A789-5AA759DE7F3B}
 		{1ADE655C-BE9E-4760-A7AA-0B73B8F8DB14} = {AC3021C9-1610-4C52-A789-5AA759DE7F3B}
 		{9089A224-0968-4F1E-B2B2-45624A75EC5B} = {20BD5FCC-5028-4949-AEE5-B76DEDF2169B}
+		{9501173D-2B61-4906-B9DC-F7962992AC78} = {20BD5FCC-5028-4949-AEE5-B76DEDF2169B}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F99A463E-E00F-4225-9F61-F593E863E2FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -52,5 +55,9 @@ Global
 		{9089A224-0968-4F1E-B2B2-45624A75EC5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9089A224-0968-4F1E-B2B2-45624A75EC5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9089A224-0968-4F1E-B2B2-45624A75EC5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9501173D-2B61-4906-B9DC-F7962992AC78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9501173D-2B61-4906-B9DC-F7962992AC78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9501173D-2B61-4906-B9DC-F7962992AC78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9501173D-2B61-4906-B9DC-F7962992AC78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
