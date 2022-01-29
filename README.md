@@ -15,7 +15,7 @@
 1. ~~Create README.md + roadmap~~
 2. ~~Initialize project, install required dependencies~~
 3. ~~Define domain models~~
-4. Implement logic of distance calculation
+4. ~~Implement logic of distance calculation~~
 5. Create frontend application to showcase API endpoint
 6. ~~Integrate with docker~~
 7. Integrate with Github actions
