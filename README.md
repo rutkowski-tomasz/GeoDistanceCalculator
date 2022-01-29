@@ -50,3 +50,4 @@ Web API and client application are separate projects and should be started separ
 15. Enable swagger
 16. Implement mappers
 17. Integrate with docker-compose for single command project startup
+18. Generate API client for angular on build

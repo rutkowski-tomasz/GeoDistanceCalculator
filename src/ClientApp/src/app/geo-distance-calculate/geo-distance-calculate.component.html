@@ -1,0 +1,16 @@
+<form [formGroup]="geoDistanceForm">
+  <label for="locationALatitude">Latitude</label>
+  <input id="locationALatitude" formControlName="locationALatitude" >
+  
+  <label for="locationALongitude">Longitude</label>
+  <input id="locationALongitude" formControlName="locationALongitude" >
+
+  <label for="locationBLatitude">Latitude</label>
+  <input id="locationBLatitude" formControlName="locationBLatitude" >
+
+  <label for="locationBLongitude">Longitude</label>
+  <input id="locationBLongitude" formControlName="locationBLongitude" >
+</form>
+
+Calculated distance:
+{{ distance$ | async }}
