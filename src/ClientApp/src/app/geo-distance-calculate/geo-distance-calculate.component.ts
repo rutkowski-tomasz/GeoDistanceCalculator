@@ -1,18 +1,21 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
-import { debounceTime, map, switchMap, filter } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
+import { catchError, debounceTime, finalize, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { HttpRequestState } from '../common/http-request-state';
 import { CalculateGeoDistanceRequest } from '../models/calculate-geo-distance-request';
 import { GeoDistanceClientService } from '../services/geo-distance-client.service';
 
 @Component({
     selector: 'app-geo-distance-calculate',
-    templateUrl: './geo-distance-calculate.component.html'
+    templateUrl: './geo-distance-calculate.component.html',
+    styleUrls: ['./geo-distance-calculate.component.scss']
 })
 export class GeoDistanceCalculateComponent implements OnInit {
 
-    geoDistanceForm: FormGroup;
-    distance$: Observable<number>;
+    public geoDistanceForm: FormGroup;
+    public distance$: Observable<HttpRequestState<number>>;
+    public isLoading$ = new BehaviorSubject<boolean>(false);
 
     constructor(
         private client: GeoDistanceClientService
@@ -28,9 +31,21 @@ export class GeoDistanceCalculateComponent implements OnInit {
         });
 
         this.distance$ = this.geoDistanceForm.valueChanges.pipe(
+            // tap(_ => console.log('asdaa')),
             debounceTime(250),
+            // tap(_ => console.log('asd')),
             map(formValues => this.buildCalculateGeoDistanceRequest(formValues)),
-            switchMap(query => this.client.calculate(query))
+            // tap(_ => this.isLoading$.next(true)),
+            // switchMap(query => this.client.calculate(query).pipe(
+            //     tap(_ => console.log('test')),
+            //     tap(() => this.isLoading$.next(false))
+            // )),
+
+            switchMap(query => this.client.calculate(query).pipe(
+                map((value) => ({isLoading: false, value})),
+                catchError(error => of({isLoading: false, error})),
+                startWith({isLoading: true})
+            ))
         );
     }
 

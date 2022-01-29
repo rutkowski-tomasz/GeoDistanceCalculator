@@ -1,16 +1,58 @@
-<form [formGroup]="geoDistanceForm">
-  <label for="locationALatitude">Latitude</label>
-  <input id="locationALatitude" formControlName="locationALatitude" >
-  
-  <label for="locationALongitude">Longitude</label>
-  <input id="locationALongitude" formControlName="locationALongitude" >
+<div class="component-center-content">
+    <form [formGroup]="geoDistanceForm" class="geo-distance-content-box">
+        <p class="mat-h2">First location</p>
 
-  <label for="locationBLatitude">Latitude</label>
-  <input id="locationBLatitude" formControlName="locationBLatitude" >
+        <table>
+        <tr>
+            <td>
+            <mat-form-field appearance="fill">
+                <mat-label>Latitude</mat-label>
+                <input matInput formControlName="locationBLatitude" />
+            </mat-form-field>
+            </td>
+            <td>
+            <mat-form-field appearance="fill">
+                <mat-label>Longitude</mat-label>
+                <input matInput formControlName="locationBLongitude" />
+            </mat-form-field>
+            </td>
+        </tr>
+        </table>
 
-  <label for="locationBLongitude">Longitude</label>
-  <input id="locationBLongitude" formControlName="locationBLongitude" >
-</form>
+        <p class="mat-h2">Second location</p>
 
-Calculated distance:
-{{ distance$ | async }}
+        <table>
+        <tr>
+            <td>
+            <mat-form-field appearance="fill">
+                <mat-label>Latitude</mat-label>
+                <input matInput formControlName="locationBLatitude" />
+            </mat-form-field>
+            </td>
+            <td>
+            <mat-form-field appearance="fill">
+                <mat-label>Longitude</mat-label>
+                <input matInput formControlName="locationBLongitude" />
+            </mat-form-field>
+            </td>
+        </tr>
+        </table>
+    </form>
+
+    <div class="geo-distance-content-box">
+        <p class="mat-h2">Calculated distance:</p>
+        <ng-container *ngIf="distance$ | async as data; else enterCoordinates">
+            <ng-container *ngIf="!data.isLoading; else loading">
+                <p class="mat-h1 result">{{ data.value | number }} km</p>
+            </ng-container>
+            <ng-template #loading>
+                <mat-spinner [diameter]="44"></mat-spinner>
+            </ng-template>
+        </ng-container>
+
+        <ng-template #enterCoordinates>
+            <p class="mat-h1">Enter coordinates to calculate distance</p>
+        </ng-template>
+    </div>
+</div>
+

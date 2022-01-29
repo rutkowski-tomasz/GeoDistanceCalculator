@@ -1,0 +1,25 @@
+/* my-component.scss */
+@import "~@angular/material/theming";
+@import '/src/variables.scss';
+
+.geo-distance-content-box {
+    background: $background;
+    padding: 3rem;
+    border-radius: 4px;
+    flex: 1;
+    margin: 0 0 3rem 0;
+
+    .result {
+        color: mat-color($primary);
+        font-weight: 900;
+    }
+}
+
+.component-center-content {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    padding: 3rem 3rem;
+}
+
