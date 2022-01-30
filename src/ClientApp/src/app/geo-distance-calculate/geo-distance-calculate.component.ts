@@ -6,6 +6,7 @@ import { HttpRequestState } from '../common/http-request-state';
 import { CalculateGeoDistanceRequest } from '../models/calculate-geo-distance-request';
 import { CalculateGeoDistanceResponse } from '../models/calculate-geo-distance-response';
 import { DistanceUnit } from '../models/distance-unit.enum';
+import { GeoDistanceCalculationMethod } from '../models/geo-distance-calculation-method.enum';
 import { GeoDistanceClientService } from '../services/geo-distance-client.service';
 
 @Component({
@@ -15,10 +16,12 @@ import { GeoDistanceClientService } from '../services/geo-distance-client.servic
 })
 export class GeoDistanceCalculateComponent implements OnInit {
 
+    public DistanceUnit = DistanceUnit;
+    public GeoDistanceCalculationMethod = GeoDistanceCalculationMethod;
+
     public geoDistanceForm: FormGroup;
     public distance$: Observable<HttpRequestState<CalculateGeoDistanceResponse>>;
     public isLoading$ = new BehaviorSubject<boolean>(false);
-    public DistanceUnit = DistanceUnit;
 
     constructor(
         private client: GeoDistanceClientService
@@ -31,7 +34,8 @@ export class GeoDistanceCalculateComponent implements OnInit {
             locationALongitude: new FormControl(-6.372663, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
             locationBLatitude: new FormControl(41.385101, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
             locationBLongitude: new FormControl(-81.440440, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
-            unit: new FormControl(DistanceUnit[DistanceUnit.Kilometer], [Validators.required])
+            unit: new FormControl(DistanceUnit[DistanceUnit.Kilometer], [Validators.required]),
+            method: new FormControl(GeoDistanceCalculationMethod[GeoDistanceCalculationMethod.GeoCurve], [Validators.required]),
         });
 
         this.distance$ = this.geoDistanceForm.valueChanges.pipe(
@@ -56,6 +60,7 @@ export class GeoDistanceCalculateComponent implements OnInit {
         request.locationBLatitude = parseFloat(formValues.locationBLatitude);
         request.locationBLongitude = parseFloat(formValues.locationBLongitude);
         request.unit = formValues.unit;
+        request.method = formValues.method;
 
         return request;
     }
