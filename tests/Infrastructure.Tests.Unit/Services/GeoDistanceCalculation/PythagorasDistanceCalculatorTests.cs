@@ -33,6 +33,6 @@ public class PythagorasDistanceCalculatorTests : IClassFixture<PythagorasDistanc
 
         var distance = await _distanceCalculator.CalculateDistanceAsync(locationA, locationB);
 
-        distance.Value.Should().BeApproximately(5536, 1);
+        distance.Value.Should().BeApproximately(5536, 400);
     }
 }
