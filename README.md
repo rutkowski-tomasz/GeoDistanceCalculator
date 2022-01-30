@@ -59,6 +59,8 @@ Note: If you only want to start the solution without pushing new images you shou
 4. Push images `docker-compose push`
 5. Apply kubernetes configuration `kubectl apply -f ./kubernetes`
 
+Registries: [Web API](https://hub.docker.com/repository/docker/rutkowski/geodistancecalculator-webapi), [Client App](https://hub.docker.com/repository/docker/rutkowski/geodistancecalculator-clientapp)
+
 ## Backend package dependencies
 - [ApiEndpoints](https://github.com/ardalis/ApiEndpoints)
 - [FluentAssertions](https://fluentassertions.com/)
