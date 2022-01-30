@@ -27,15 +27,15 @@ public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
     .WithRequest<CalculateGeoDistanceRequest>
     .WithResult<CalculateGeoDistanceResponse>
 {
-    private readonly IGeoDistanceService _geoDistanceService;
+    private readonly IGeoDistanceCalculator _geoDistanceCalculator;
     private readonly IDistanceConversionService _distanceConversionService;
 
     public CalculateGeoDistanceEndpoint(
-        IGeoDistanceService geoDistanceService,
+        IGeoDistanceCalculator geoDistanceCalculator,
         IDistanceConversionService distanceConversionService
     )
     {
-        _geoDistanceService = geoDistanceService;
+        _geoDistanceCalculator = geoDistanceCalculator;
         _distanceConversionService = distanceConversionService;
     }
 
@@ -60,7 +60,7 @@ public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
             Longitude = Longitude.From(request.LocationBLongitude)
         };
         
-        var distance = await _geoDistanceService.CalculateDistanceAsync(locationA, locationB);
+        var distance = await _geoDistanceCalculator.CalculateDistanceAsync(locationA, locationB);
 
         var convertedDistance = _distanceConversionService.Convert(distance, request.Unit);
 

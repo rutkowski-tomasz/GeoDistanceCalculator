@@ -2,7 +2,7 @@
 
 namespace Application.Common.Interfaces;
 
-public interface IGeoDistanceService
+public interface IGeoDistanceCalculator
 {
     Task<Distance> CalculateDistanceAsync(
         GeoLocation locationA,

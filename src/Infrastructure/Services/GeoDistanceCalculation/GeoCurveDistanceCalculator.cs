@@ -3,9 +3,9 @@ using Domain.Constants;
 using Domain.Entities;
 using Domain.Enums;
 
-namespace Infrastructure.Services;
+namespace Infrastructure.Services.GeoDistanceCalculation;
 
-public class GeoCurveDistanceService : IGeoDistanceService
+public class GeoCurveDistanceCalculator : IGeoDistanceCalculator
 {
     public async Task<Distance> CalculateDistanceAsync(GeoLocation locationA, GeoLocation locationB)
     {

@@ -2,18 +2,18 @@
 using Domain.Entities;
 using Domain.ValueObjects;
 using FluentAssertions;
-using Infrastructure.Services;
+using Infrastructure.Services.GeoDistanceCalculation;
 using Xunit;
 
-namespace Infrastructure.Tests.Unit.Services;
+namespace Infrastructure.Tests.Unit.Services.GeoDistanceCalculation;
 
-public class GeoCurveDistanceServiceTests : IClassFixture<GeoCurveDistanceService>
+public class GeoCurveDistanceCalculatorTests : IClassFixture<GeoCurveDistanceCalculator>
 {
-    private readonly GeoCurveDistanceService _geoCurveDistanceService;
+    private readonly GeoCurveDistanceCalculator _distanceCalculator;
 
-    public GeoCurveDistanceServiceTests(GeoCurveDistanceService geoCurveDistanceService)
+    public GeoCurveDistanceCalculatorTests(GeoCurveDistanceCalculator distanceCalculator)
     {
-        _geoCurveDistanceService = geoCurveDistanceService;
+        _distanceCalculator = distanceCalculator;
     }
     
     [Fact]
@@ -31,7 +31,7 @@ public class GeoCurveDistanceServiceTests : IClassFixture<GeoCurveDistanceServic
             Longitude = Longitude.From(-81.440440)
         };
 
-        var distance = await _geoCurveDistanceService.CalculateDistanceAsync(locationA, locationB);
+        var distance = await _distanceCalculator.CalculateDistanceAsync(locationA, locationB);
 
         distance.Value.Should().BeApproximately(5536, 1);
     }
