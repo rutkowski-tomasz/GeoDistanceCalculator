@@ -1,0 +1,134 @@
+{
+  "x-generator": "NSwag v13.15.5.0 (NJsonSchema v10.6.6.0 (Newtonsoft.Json v13.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "GeoDistanceCalculator API",
+    "description": "GeoDistanceCalculator API",
+    "version": "v1"
+  },
+  "consumes": [
+    "application/json",
+    "text/json",
+    "application/*+json"
+  ],
+  "produces": [
+    "text/plain",
+    "application/json",
+    "text/json"
+  ],
+  "paths": {
+    "/geo-distance/calculate": {
+      "post": {
+        "tags": [
+          "GeoDistance"
+        ],
+        "summary": "Calculates the distance",
+        "description": "Calculates a distance between given geographical points",
+        "operationId": "CalculateGeoDistanceEndpoint_Handle",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CalculateGeoDistanceRequest"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CalculateGeoDistanceResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CalculateGeoDistanceResponse": {
+      "type": "object",
+      "required": [
+        "value",
+        "unit",
+        "method"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "format": "double"
+        },
+        "unit": {
+          "$ref": "#/definitions/DistanceUnit"
+        },
+        "method": {
+          "$ref": "#/definitions/GeoDistanceCalculationMethod"
+        }
+      }
+    },
+    "DistanceUnit": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Kilometer",
+        "Mile"
+      ],
+      "enum": [
+        "Kilometer",
+        "Mile"
+      ]
+    },
+    "GeoDistanceCalculationMethod": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "GeoCurve",
+        "Pythagoras",
+        "ThreeDimensionPoint"
+      ],
+      "enum": [
+        "GeoCurve",
+        "Pythagoras",
+        "ThreeDimensionPoint"
+      ]
+    },
+    "CalculateGeoDistanceRequest": {
+      "type": "object",
+      "required": [
+        "locationALatitude",
+        "locationALongitude",
+        "locationBLatitude",
+        "locationBLongitude",
+        "unit",
+        "method"
+      ],
+      "properties": {
+        "locationALatitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "locationALongitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "locationBLatitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "locationBLongitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "unit": {
+          "$ref": "#/definitions/DistanceUnit"
+        },
+        "method": {
+          "$ref": "#/definitions/GeoDistanceCalculationMethod"
+        }
+      }
+    }
+  }
+}
