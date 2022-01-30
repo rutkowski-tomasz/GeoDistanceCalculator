@@ -15,27 +15,29 @@ public class CalculateGeoDistanceRequest
     public double LocationBLatitude { get; set; }
     public double LocationBLongitude { get; set; }
     public DistanceUnit Unit { get; set; }
+    public GeoDistanceCalculationMethod Method { get; set; }
 }
 
 public class CalculateGeoDistanceResponse
 {
     public double Value { get; set; }
     public DistanceUnit Unit { get; set; }
+    public GeoDistanceCalculationMethod Method { get; set; }
 }
 
 public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
     .WithRequest<CalculateGeoDistanceRequest>
     .WithResult<CalculateGeoDistanceResponse>
 {
-    private readonly IGeoDistanceService _geoDistanceService;
+    private readonly IGeoDistanceCalculationStrategy _distanceCalculationStrategy;
     private readonly IDistanceConversionService _distanceConversionService;
 
     public CalculateGeoDistanceEndpoint(
-        IGeoDistanceService geoDistanceService,
+        IGeoDistanceCalculationStrategy distanceCalculationStrategy,
         IDistanceConversionService distanceConversionService
     )
     {
-        _geoDistanceService = geoDistanceService;
+        _distanceCalculationStrategy = distanceCalculationStrategy;
         _distanceConversionService = distanceConversionService;
     }
 
@@ -60,14 +62,15 @@ public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
             Longitude = Longitude.From(request.LocationBLongitude)
         };
         
-        var distance = await _geoDistanceService.CalculateDistanceAsync(locationA, locationB);
-
+        var distance = await _distanceCalculationStrategy.CalculateDistanceAsync(locationA, locationB, request.Method);
+        
         var convertedDistance = _distanceConversionService.Convert(distance, request.Unit);
-
+        
         var response = new CalculateGeoDistanceResponse
         {
             Unit = convertedDistance.Unit,
-            Value = convertedDistance.Value
+            Value = convertedDistance.Value,
+            Method = request.Method,
         };
         
         return response;

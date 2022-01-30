@@ -73,6 +73,18 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        
+        <p class="mat-h2">Calculation method</p>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Method</mat-label>
+
+            <mat-select formControlName="method">
+                <mat-option *ngFor="let method of GeoDistanceCalculationMethod | enumToArray" [value]="method">
+                    {{ method }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
     </form>
 
     <div class="geo-distance-content-box">

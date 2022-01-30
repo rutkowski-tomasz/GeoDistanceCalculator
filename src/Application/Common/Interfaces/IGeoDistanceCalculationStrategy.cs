@@ -1,11 +1,13 @@
 ﻿using Domain.Entities;
+using Domain.Enums;
 
 namespace Application.Common.Interfaces;
 
-public interface IGeoDistanceService
+public interface IGeoDistanceCalculationStrategy
 {
     Task<Distance> CalculateDistanceAsync(
         GeoLocation locationA,
-        GeoLocation locationB
+        GeoLocation locationB,
+        GeoDistanceCalculationMethod method
     );
 }
