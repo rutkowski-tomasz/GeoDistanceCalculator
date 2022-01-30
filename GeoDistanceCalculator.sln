@@ -1,46 +1,35 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AC3021C9-1610-4C52-A789-5AA759DE7F3B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{20BD5FCC-5028-4949-AEE5-B76DEDF2169B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "src\Api\Api.csproj", "{F99A463E-E00F-4225-9F61-F593E863E2FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "src\Api\Api.csproj", "{F99A463E-E00F-4225-9F61-F593E863E2FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{F92B3827-2593-4292-98E5-D41EC96696A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Domain\Domain.csproj", "{F92B3827-2593-4292-98E5-D41EC96696A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{1ADE655C-BE9E-4760-A7AA-0B73B8F8DB14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{1ADE655C-BE9E-4760-A7AA-0B73B8F8DB14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests.Unit", "tests\Domain.Tests.Unit\Domain.Tests.Unit.csproj", "{9089A224-0968-4F1E-B2B2-45624A75EC5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Tests.Unit", "tests\Domain.Tests.Unit\Domain.Tests.Unit.csproj", "{9089A224-0968-4F1E-B2B2-45624A75EC5B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "items", "items", "{011A1D71-DB48-4905-ABF9-0D2D95D9D99B}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		README.md = README.md
 		docker-compose.yml = docker-compose.yml
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Tests.Unit", "tests\Infrastructure.Tests.Unit\Infrastructure.Tests.Unit.csproj", "{9501173D-2B61-4906-B9DC-F7962992AC78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Tests.Unit", "tests\Infrastructure.Tests.Unit\Infrastructure.Tests.Unit.csproj", "{9501173D-2B61-4906-B9DC-F7962992AC78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\Application\Application.csproj", "{22CD65BC-A1C6-493C-B119-3ABBB6ABBE10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Application\Application.csproj", "{22CD65BC-A1C6-493C-B119-3ABBB6ABBE10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{F99A463E-E00F-4225-9F61-F593E863E2FA} = {AC3021C9-1610-4C52-A789-5AA759DE7F3B}
-		{F92B3827-2593-4292-98E5-D41EC96696A6} = {AC3021C9-1610-4C52-A789-5AA759DE7F3B}
-		{1ADE655C-BE9E-4760-A7AA-0B73B8F8DB14} = {AC3021C9-1610-4C52-A789-5AA759DE7F3B}
-		{9089A224-0968-4F1E-B2B2-45624A75EC5B} = {20BD5FCC-5028-4949-AEE5-B76DEDF2169B}
-		{9501173D-2B61-4906-B9DC-F7962992AC78} = {20BD5FCC-5028-4949-AEE5-B76DEDF2169B}
-		{22CD65BC-A1C6-493C-B119-3ABBB6ABBE10} = {AC3021C9-1610-4C52-A789-5AA759DE7F3B}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F99A463E-E00F-4225-9F61-F593E863E2FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -67,5 +56,19 @@ Global
 		{22CD65BC-A1C6-493C-B119-3ABBB6ABBE10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22CD65BC-A1C6-493C-B119-3ABBB6ABBE10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22CD65BC-A1C6-493C-B119-3ABBB6ABBE10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F99A463E-E00F-4225-9F61-F593E863E2FA} = {AC3021C9-1610-4C52-A789-5AA759DE7F3B}
+		{F92B3827-2593-4292-98E5-D41EC96696A6} = {AC3021C9-1610-4C52-A789-5AA759DE7F3B}
+		{1ADE655C-BE9E-4760-A7AA-0B73B8F8DB14} = {AC3021C9-1610-4C52-A789-5AA759DE7F3B}
+		{9089A224-0968-4F1E-B2B2-45624A75EC5B} = {20BD5FCC-5028-4949-AEE5-B76DEDF2169B}
+		{9501173D-2B61-4906-B9DC-F7962992AC78} = {20BD5FCC-5028-4949-AEE5-B76DEDF2169B}
+		{22CD65BC-A1C6-493C-B119-3ABBB6ABBE10} = {AC3021C9-1610-4C52-A789-5AA759DE7F3B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D70C9EC-B9D6-4586-906F-E0301A78EFEA}
 	EndGlobalSection
 EndGlobal
