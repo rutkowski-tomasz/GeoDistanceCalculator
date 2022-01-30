@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces;
+using AutoMapper;
 using Domain.Entities;
 using Domain.Enums;
 using UnitsNet;
@@ -8,12 +9,18 @@ namespace Infrastructure.Services;
 
 public class DistanceConversionService : IDistanceConversionService
 {
+    private readonly IMapper _mapper;
+
+    public DistanceConversionService(IMapper mapper)
+    {
+        _mapper = mapper;
+    }
+    
     public Distance Convert(Distance distance, DistanceUnit unit)
     {
-        // TODO: implement mapper
-        var sourceUnit = distance.Unit == DistanceUnit.Kilometer ? LengthUnit.Kilometer : LengthUnit.Mile;
-        var targetUnit = unit == DistanceUnit.Kilometer ? LengthUnit.Kilometer : LengthUnit.Mile;
-        
+        var sourceUnit = _mapper.Map<LengthUnit>(distance.Unit);
+        var targetUnit = _mapper.Map<LengthUnit>(unit);
+
         var length = Length.From(distance.Value, sourceUnit).ToUnit(targetUnit);
         var convertedDistance = Distance.From(length.Value, unit);
 

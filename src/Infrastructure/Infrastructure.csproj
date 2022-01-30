@@ -12,7 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="11.0.0" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
       <PackageReference Include="UnitsNet" Version="4.116.0" />
     </ItemGroup>
-
 </Project>
