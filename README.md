@@ -41,13 +41,13 @@ Web API and client application are separate projects and should be started separ
 6. ~~Integrate with docker~~
 7. Integrate with Github actions
 8. Implement multiple methods to calculate the distance
-9. Consider different required units
+9. ~~Consider different required units~~
 10. ~~Stylize frontend solution (use third party library)~~
 11. ~~Validate form before sending the request~~
 12. Create BDD tests (Specflow)
 13. Prepare solution for kubernetes deployment
 14. ~~Write starting instructions~~
 15. ~~Enable swagger~~
-16. Implement mappers
+16. ~~Implement mappers~~
 17. Integrate with docker-compose for single command project startup
 18. Generate API client for angular on build
