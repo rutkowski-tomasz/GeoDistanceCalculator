@@ -3,11 +3,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, debounceTime, filter, map, startWith, switchMap } from 'rxjs/operators';
 import { HttpRequestState } from '../common/http-request-state';
-import { CalculateGeoDistanceRequest } from '../models/calculate-geo-distance-request';
-import { CalculateGeoDistanceResponse } from '../models/calculate-geo-distance-response';
-import { DistanceUnit } from '../models/distance-unit.enum';
-import { GeoDistanceCalculationMethod } from '../models/geo-distance-calculation-method.enum';
-import { GeoDistanceClientService } from '../services/geo-distance-client.service';
+import {
+    CalculateGeoDistanceEndpointClient,
+    CalculateGeoDistanceRequest,
+    CalculateGeoDistanceResponse,
+    DistanceUnit,
+    GeoDistanceCalculationMethod
+} from '../services/web-api-client';
 
 @Component({
     selector: 'app-geo-distance-calculate',
@@ -24,7 +26,7 @@ export class GeoDistanceCalculateComponent implements OnInit {
     public isLoading$ = new BehaviorSubject<boolean>(false);
 
     constructor(
-        private client: GeoDistanceClientService
+        private calculateGeoDistanceClient: CalculateGeoDistanceEndpointClient
     ) { }
 
     public ngOnInit(): void {
@@ -43,7 +45,7 @@ export class GeoDistanceCalculateComponent implements OnInit {
             debounceTime(250),
             filter(_ => this.geoDistanceForm.valid),
             map(formValues => this.buildCalculateGeoDistanceRequest(formValues)),
-            switchMap(query => this.client.calculate(query).pipe(
+            switchMap(query => this.calculateGeoDistanceClient.handle(query).pipe(
                 map((value) => ({isLoading: false, value})),
                 catchError(error => of({isLoading: false, error})),
                 startWith({isLoading: true})

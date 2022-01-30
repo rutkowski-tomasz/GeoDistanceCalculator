@@ -68,8 +68,8 @@
             <mat-label>Unit</mat-label>
 
             <mat-select formControlName="unit">
-                <mat-option *ngFor="let unit of DistanceUnit | enumToArray" [value]="unit">
-                    {{ unit }}
+                <mat-option *ngFor="let unit of DistanceUnit | keyvalue" [value]="unit.key">
+                    {{ unit.value }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -80,8 +80,8 @@
             <mat-label>Method</mat-label>
 
             <mat-select formControlName="method">
-                <mat-option *ngFor="let method of GeoDistanceCalculationMethod | enumToArray" [value]="method">
-                    {{ method }}
+                <mat-option *ngFor="let method of GeoDistanceCalculationMethod | keyvalue" [value]="method.key">
+                    {{ method.value }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -91,7 +91,8 @@
         <p class="mat-h2">Calculated distance:</p>
         <ng-container *ngIf="distance$ | async as data; else enterCoordinates">
             <ng-container *ngIf="!data.isLoading; else loading">
-                <p class="mat-h1 result">{{ data.value.value | number }} {{ data.value.unit | lowercase }}</p>
+                <p *ngIf="data.error" class="mat-h1 mat-error">An error occurred</p>
+                <p *ngIf="!data.error" class="mat-h1 result">{{ data.value.value | number }} {{ data.value.unit | lowercase }}</p>
             </ng-container>
             <ng-template #loading>
                 <mat-spinner [diameter]="44"></mat-spinner>

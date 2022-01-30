@@ -4,7 +4,11 @@ using Domain.Entities;
 using Domain.Enums;
 using Domain.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
+using NJsonSchema;
+using NSwag;
+using NSwag.Annotations;
+using NSwag.Generation.Processors;
+using NSwag.Generation.Processors.Contexts;
 
 namespace Application.Endpoints.GeoDistance;
 
@@ -25,6 +29,16 @@ public class CalculateGeoDistanceResponse
     public GeoDistanceCalculationMethod Method { get; set; }
 }
 
+public class CalculateGeoDistanceEndpointProcessor : IOperationProcessor
+{
+    public bool Process(OperationProcessorContext context)
+    {
+        context.OperationDescription.Operation.Summary = "Calculates the distance";
+        context.OperationDescription.Operation.Description = "Calculates a distance between given geographical points";
+        return true;
+    }
+}
+
 public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
     .WithRequest<CalculateGeoDistanceRequest>
     .WithResult<CalculateGeoDistanceResponse>
@@ -42,12 +56,8 @@ public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
     }
 
     [HttpPost("geo-distance/calculate")]
-    [SwaggerOperation(
-        Summary = "Calculates a distance",
-        Description = "Calculates a distance between given geographical points",
-        OperationId = "GeoDistance.Calculate",
-        Tags = new [] { "GeoDistance" }
-    )]
+    [OpenApiTag("GeoDistance")]
+    [OpenApiOperationProcessor(typeof(CalculateGeoDistanceEndpointProcessor))]
     public override async Task<CalculateGeoDistanceResponse> HandleAsync([FromBody] CalculateGeoDistanceRequest request, CancellationToken cancellationToken = new CancellationToken())
     {
         var locationA = new GeoLocation
