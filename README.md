@@ -1,7 +1,17 @@
-# GeoDistanceCalculator
-
 [![Web API](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/web-api.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/web-api.yml)
 [![Client Application](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml)
+
+# GeoDistanceCalculator
+Example full-stack application demonstrator. It consists of REST API created with .NET and C# and frontend application created with Anuglar.
+
+![alt text](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/blob/main/showcase/client-app.png)
+
+There are 2 possible ways to start the project:
+- [Docker-compose setup](https://github.com/rutkowski-tomasz/GeoDistanceCalculator#project-docker-startup) (recommended - single-command start)
+- [Development setup](https://github.com/rutkowski-tomasz/GeoDistanceCalculator#project-development-startup)
+
+Access the client application at: `http://localhost:4200/`.
+Reach the web API swagger at: `https://localhost:7023/swagger/index.html`
 
 - [API base location](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/tree/main/src/Api)
 - [Client base location](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/tree/main/src/ClientApp)
@@ -9,6 +19,7 @@
 ## Project requirements
 - .NET 6 SDK 6.0.101
 - Docker 20.10.11
+- Docker-compose 1.29.2
 - Angular CLI 11.2.2
 - Node.js SDK 14.16.0
 
@@ -45,6 +56,7 @@ dotnet dev-certs https --trust
 
 ## Frontend package dependencies
 - [Angular Material](https://material.angular.io/)
+- [Nginx](https://www.nginx.com/)
 
 ## Notes
 1. Web API and client application are separate projects and can be deployed separately. It would be better to place them in other repositories. They are placed in one repository because of demo purpose.
@@ -69,3 +81,5 @@ dotnet dev-certs https --trust
 16. ~~Implement mappers~~
 17. ~~Integrate with docker-compose for single command project startup~~
 18. Generate API client for angular on build
+19. Add code coverage tool
+20. ~~Add project description~~
