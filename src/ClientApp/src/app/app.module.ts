@@ -13,11 +13,13 @@ import { AppComponent } from './app.component';
 import { GeoDistanceCalculateComponent } from './geo-distance-calculate/geo-distance-calculate.component';
 import { APIInterceptor } from './interceptors/api.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EnumToArrayPipe } from './shared/pipes/enum-to-array.pipe';
 
 @NgModule({
     declarations: [
         AppComponent,
         GeoDistanceCalculateComponent,
+        EnumToArrayPipe,
     ],
     imports: [
         BrowserModule,

@@ -18,6 +18,7 @@ export class GeoDistanceCalculateComponent implements OnInit {
     public geoDistanceForm: FormGroup;
     public distance$: Observable<HttpRequestState<CalculateGeoDistanceResponse>>;
     public isLoading$ = new BehaviorSubject<boolean>(false);
+    public DistanceUnit = DistanceUnit;
 
     constructor(
         private client: GeoDistanceClientService
@@ -30,7 +31,7 @@ export class GeoDistanceCalculateComponent implements OnInit {
             locationALongitude: new FormControl(-6.372663, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
             locationBLatitude: new FormControl(41.385101, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
             locationBLongitude: new FormControl(-81.440440, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
-            unit: new FormControl(DistanceUnit.Kilometer, [Validators.required])
+            unit: new FormControl(DistanceUnit[DistanceUnit.Kilometer], [Validators.required])
         });
 
         this.distance$ = this.geoDistanceForm.valueChanges.pipe(
