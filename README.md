@@ -1,6 +1,6 @@
 # GeoDistanceCalculator
 
-[![.NET](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/dotnet.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/dotnet.yml)
+[![Web API](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/web-api.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/web-api.yml)
 [![Client Application](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml)
 
 - [API base location](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/tree/main/src/Api)
@@ -57,7 +57,7 @@ dotnet dev-certs https --trust
 4. ~~Implement logic of distance calculation~~
 5. ~~Create frontend application to showcase API endpoint~~
 6. ~~Integrate with docker~~
-7. Integrate with Github actions
+7. ~~Integrate with Github actions~~
 8. Implement multiple methods to calculate the distance
 9. ~~Consider different required units~~
 10. ~~Stylize frontend solution (use third party library)~~
