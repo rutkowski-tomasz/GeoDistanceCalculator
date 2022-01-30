@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   geodistancecalculator-webapi:
-    image: geodistancecalculator-webapi
+    image: ${DOCKER_REGISTRY-}geodistancecalculator-webapi
     container_name: geodistancecalculator-webapi
     build:
       context: .
@@ -21,7 +21,7 @@ services:
         published: 7023
 
   geodistancecalculator-clientapp:
-    image: geodistancecalculator-clientapp
+    image: ${DOCKER_REGISTRY-}geodistancecalculator-clientapp
     container_name: geodistancecalculator-clientapp
     build: src/ClientApp
     ports:

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geodistancecalculator-webapi-deployment
+  labels:
+    app: geodistancecalculator-webapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: geodistancecalculator-webapi
+  template:
+    metadata:
+      labels:
+        app: geodistancecalculator-webapi
+    spec:
+      containers:
+      - name: geodistancecalculator-webapi
+        image: rutkowski/geodistancecalculator-webapi:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+          - containerPort: 443
+        resources:
+          limits:
+            memory: 256Mi
+            cpu: "1"
+          requests:
+            memory: 128Mi
+            cpu: "0.2"

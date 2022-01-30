@@ -2,9 +2,9 @@
 [![Client Application](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml)
 
 # GeoDistanceCalculator
-Example full-stack application demonstrator. It consists of REST API created with .NET and C# and frontend application created with Anuglar.
+Example full-stack application demonstrator. It consists of REST API created with .NET and C# and frontend application created with Angular.
 
-![alt text](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/blob/main/showcase/client-app.png)
+![client-app](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/blob/main/showcase/client-app.png)
 
 There are 2 possible ways to start the project:
 - [Docker-compose setup](https://github.com/rutkowski-tomasz/GeoDistanceCalculator#project-docker-startup) (recommended - single-command start)
@@ -22,6 +22,7 @@ Reach the web API swagger at: `https://localhost:7023/swagger/index.html`
 - Docker-compose 1.29.2
 - Angular CLI 11.2.2
 - Node.js SDK 14.16.0
+- kubectl v1.22.4
 
 ## Project development startup
 Web API and client application are separate projects and should be started separately:
@@ -34,7 +35,7 @@ Web API and client application are separate projects and should be started separ
    1. Navigate to `src/Api/`
    2. Run `dotnet run`
 
-## Project docker startup
+## Project docker-compose startup
 
 1. Add temporary SSL cert
 ```sh
@@ -46,6 +47,16 @@ dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p Your_password1
 dotnet dev-certs https --trust
 ```
 2. Start docker-compose (`docker-compose up` at root directory)
+
+## Project kubernetes startup
+
+Note: If you only want to start the solution without pushing new images you should omit 2-4 steps from below list
+
+1. Set **DOCKER_REGISTRY** env variable `export DOCKER_REGISTRY=rutkowski/`
+2. Login to repository `docker login`
+3. Build images `docker-compose build`
+4. Push images `docker-compose push`
+5. Apply kubernetes configuration `kubectl apply -f ./kubernetes`
 
 ## Backend package dependencies
 - [ApiEndpoints](https://github.com/ardalis/ApiEndpoints)
@@ -75,7 +86,7 @@ dotnet dev-certs https --trust
 10. ~~Stylize frontend solution (use third party library)~~
 11. ~~Validate form before sending the request~~
 12. Create BDD tests (Specflow)
-13. Prepare solution for kubernetes deployment
+13. ~~Prepare solution for kubernetes deployment~~
 14. ~~Write starting instructions~~
 15. ~~Enable swagger~~
 16. ~~Implement mappers~~
@@ -83,3 +94,5 @@ dotnet dev-certs https --trust
 18. Generate API client for angular on build
 19. Add code coverage tool
 20. ~~Add project description~~
+21. Add HTTPS support for nginx container
+22. Add HTTPS support for kubernetes deployment
