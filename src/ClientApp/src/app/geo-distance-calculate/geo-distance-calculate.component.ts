@@ -32,10 +32,10 @@ export class GeoDistanceCalculateComponent implements OnInit {
     public ngOnInit(): void {
 
         this.geoDistanceForm = new FormGroup({
-            locationALatitude: new FormControl(53.297975, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
-            locationALongitude: new FormControl(-6.372663, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
-            locationBLatitude: new FormControl(41.385101, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
-            locationBLongitude: new FormControl(-81.440440, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
+            initialLatitude: new FormControl(53.297975, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
+            initialLongitude: new FormControl(-6.372663, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
+            targetLatitude: new FormControl(41.385101, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
+            targetLongitude: new FormControl(-81.440440, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
             unit: new FormControl(DistanceUnit[DistanceUnit.Kilometer], [Validators.required]),
             method: new FormControl(GeoDistanceCalculationMethod[GeoDistanceCalculationMethod.GeoCurve], [Validators.required]),
         });
@@ -55,15 +55,7 @@ export class GeoDistanceCalculateComponent implements OnInit {
 
     private buildCalculateGeoDistanceRequest(formValues: any): CalculateGeoDistanceRequest {
 
-        const request = new CalculateGeoDistanceRequest();
-
-        request.locationALatitude = parseFloat(formValues.locationALatitude);
-        request.locationALongitude = parseFloat(formValues.locationALongitude);
-        request.locationBLatitude = parseFloat(formValues.locationBLatitude);
-        request.locationBLongitude = parseFloat(formValues.locationBLongitude);
-        request.unit = formValues.unit;
-        request.method = formValues.method;
-
+        const request = new CalculateGeoDistanceRequest(formValues);
         return request;
     }
 }

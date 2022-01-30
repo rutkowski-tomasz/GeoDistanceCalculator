@@ -7,11 +7,11 @@
                 <td>
                 <mat-form-field appearance="fill">
                     <mat-label>Latitude</mat-label>
-                    <input matInput formControlName="locationALatitude" />
-                    <mat-error *ngIf="geoDistanceForm.get('locationALatitude').hasError('required')">
+                    <input matInput formControlName="initialLatitude" />
+                    <mat-error *ngIf="geoDistanceForm.get('initialLatitude').hasError('required')">
                         Latitude value is required
                     </mat-error>
-                    <mat-error *ngIf="geoDistanceForm.get('locationALatitude').hasError('pattern')">
+                    <mat-error *ngIf="geoDistanceForm.get('initialLatitude').hasError('pattern')">
                         Latitude must be a valid number
                     </mat-error>
                 </mat-form-field>
@@ -19,11 +19,11 @@
                 <td>
                 <mat-form-field appearance="fill">
                     <mat-label>Longitude</mat-label>
-                    <input matInput formControlName="locationALongitude" />
-                    <mat-error *ngIf="geoDistanceForm.get('locationALongitude').hasError('required')">
+                    <input matInput formControlName="initialLongitude" />
+                    <mat-error *ngIf="geoDistanceForm.get('initialLongitude').hasError('required')">
                         Longitude value is required
                     </mat-error>
-                    <mat-error *ngIf="geoDistanceForm.get('locationALongitude').hasError('pattern')">
+                    <mat-error *ngIf="geoDistanceForm.get('initialLongitude').hasError('pattern')">
                         Longitude must be a valid number
                     </mat-error>
                 </mat-form-field>
@@ -38,11 +38,11 @@
                 <td>
                 <mat-form-field appearance="fill">
                     <mat-label>Latitude</mat-label>
-                    <input matInput formControlName="locationBLatitude" />
-                    <mat-error *ngIf="geoDistanceForm.get('locationBLatitude').hasError('required')">
+                    <input matInput formControlName="targetLatitude" />
+                    <mat-error *ngIf="geoDistanceForm.get('targetLatitude').hasError('required')">
                         Latitude value is required
                     </mat-error>
-                    <mat-error *ngIf="geoDistanceForm.get('locationBLatitude').hasError('pattern')">
+                    <mat-error *ngIf="geoDistanceForm.get('targetLatitude').hasError('pattern')">
                         Latitude must be a valid number
                     </mat-error>
                 </mat-form-field>
@@ -50,11 +50,11 @@
                 <td>
                 <mat-form-field appearance="fill">
                     <mat-label>Longitude</mat-label>
-                    <input matInput formControlName="locationBLongitude" />
-                    <mat-error *ngIf="geoDistanceForm.get('locationBLongitude').hasError('required')">
+                    <input matInput formControlName="targetLongitude" />
+                    <mat-error *ngIf="geoDistanceForm.get('targetLongitude').hasError('required')">
                         Longitude value is required
                     </mat-error>
-                    <mat-error *ngIf="geoDistanceForm.get('locationBLongitude').hasError('pattern')">
+                    <mat-error *ngIf="geoDistanceForm.get('targetLongitude').hasError('pattern')">
                         Longitude must be a valid number
                     </mat-error>
                 </mat-form-field>

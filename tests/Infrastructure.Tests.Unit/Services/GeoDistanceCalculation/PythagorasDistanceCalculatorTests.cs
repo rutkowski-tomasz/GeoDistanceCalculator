@@ -19,19 +19,19 @@ public class PythagorasDistanceCalculatorTests : IClassFixture<PythagorasDistanc
     [Fact]
     public async Task ShouldCalculateApproximatelyValidDistance()
     {
-        var locationA = new GeoLocation
+        var initialLocation = new GeoLocation
         {
             Latitude = Latitude.From(53.297975),
             Longitude = Longitude.From(-6.372663)
         };
 
-        var locationB = new GeoLocation
+        var targetLocation = new GeoLocation
         {
             Latitude = Latitude.From(41.385101),
             Longitude = Longitude.From(-81.440440)
         };
 
-        var distance = await _distanceCalculator.CalculateDistanceAsync(locationA, locationB);
+        var distance = await _distanceCalculator.CalculateDistanceAsync(initialLocation, targetLocation);
 
         distance.Value.Should().BeApproximately(5536, 400);
     }

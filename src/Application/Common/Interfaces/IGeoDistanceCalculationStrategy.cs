@@ -6,8 +6,8 @@ namespace Application.Common.Interfaces;
 public interface IGeoDistanceCalculationStrategy
 {
     Task<Distance> CalculateDistanceAsync(
-        GeoLocation locationA,
-        GeoLocation locationB,
+        GeoLocation initialLocation,
+        GeoLocation targetLocation,
         GeoDistanceCalculationMethod method
     );
 }

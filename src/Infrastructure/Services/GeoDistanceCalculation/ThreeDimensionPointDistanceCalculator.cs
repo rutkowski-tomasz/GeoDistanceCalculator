@@ -10,10 +10,10 @@ public class ThreeDimensionPointDistanceCalculator : IGeoDistanceCalculator
 {
     public GeoDistanceCalculationMethod Method => GeoDistanceCalculationMethod.ThreeDimensionPoint;
     
-    public async Task<Distance> CalculateDistanceAsync(GeoLocation locationA, GeoLocation locationB)
+    public async Task<Distance> CalculateDistanceAsync(GeoLocation initialLocation, GeoLocation targetLocation)
     {
-        var aVector = CalculatePositionVector(locationA);
-        var bVector = CalculatePositionVector(locationB);
+        var aVector = CalculatePositionVector(initialLocation);
+        var bVector = CalculatePositionVector(targetLocation);
 
         var delta = aVector - bVector;
         var distanceValue = GeoConstants.EarthRadius * Math.Sqrt(delta.X * delta.X + delta.Y * delta.Y + delta.Z * delta.Z);

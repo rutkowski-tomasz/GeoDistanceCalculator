@@ -14,13 +14,13 @@ public class GeoDistanceCalculationStrategy : IGeoDistanceCalculationStrategy
     }
 
     public async Task<Distance> CalculateDistanceAsync(
-        GeoLocation locationA,
-        GeoLocation locationB,
+        GeoLocation initialLocation,
+        GeoLocation targetLocation,
         GeoDistanceCalculationMethod method
     )
     {
         var calculator =  _geoDistanceCalculators.First(x => x.Method == method);
-        var distance = await calculator.CalculateDistanceAsync(locationA, locationB);
+        var distance = await calculator.CalculateDistanceAsync(initialLocation, targetLocation);
 
         return await Task.FromResult(distance);
     }

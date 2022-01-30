@@ -98,27 +98,27 @@
     "CalculateGeoDistanceRequest": {
       "type": "object",
       "required": [
-        "locationALatitude",
-        "locationALongitude",
-        "locationBLatitude",
-        "locationBLongitude",
+        "initialLatitude",
+        "initialLongitude",
+        "targetLatitude",
+        "targetLongitude",
         "unit",
         "method"
       ],
       "properties": {
-        "locationALatitude": {
+        "initialLatitude": {
           "type": "number",
           "format": "double"
         },
-        "locationALongitude": {
+        "initialLongitude": {
           "type": "number",
           "format": "double"
         },
-        "locationBLatitude": {
+        "targetLatitude": {
           "type": "number",
           "format": "double"
         },
-        "locationBLongitude": {
+        "targetLongitude": {
           "type": "number",
           "format": "double"
         },

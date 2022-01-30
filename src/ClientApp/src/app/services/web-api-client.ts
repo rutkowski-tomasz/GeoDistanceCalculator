@@ -146,10 +146,10 @@ export enum GeoDistanceCalculationMethod {
 }
 
 export class CalculateGeoDistanceRequest implements ICalculateGeoDistanceRequest {
-    locationALatitude!: number;
-    locationALongitude!: number;
-    locationBLatitude!: number;
-    locationBLongitude!: number;
+    initialLatitude!: number;
+    initialLongitude!: number;
+    targetLatitude!: number;
+    targetLongitude!: number;
     unit!: DistanceUnit;
     method!: GeoDistanceCalculationMethod;
 
@@ -164,10 +164,10 @@ export class CalculateGeoDistanceRequest implements ICalculateGeoDistanceRequest
 
     init(_data?: any) {
         if (_data) {
-            this.locationALatitude = _data["locationALatitude"];
-            this.locationALongitude = _data["locationALongitude"];
-            this.locationBLatitude = _data["locationBLatitude"];
-            this.locationBLongitude = _data["locationBLongitude"];
+            this.initialLatitude = _data["initialLatitude"];
+            this.initialLongitude = _data["initialLongitude"];
+            this.targetLatitude = _data["targetLatitude"];
+            this.targetLongitude = _data["targetLongitude"];
             this.unit = _data["unit"];
             this.method = _data["method"];
         }
@@ -182,10 +182,10 @@ export class CalculateGeoDistanceRequest implements ICalculateGeoDistanceRequest
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["locationALatitude"] = this.locationALatitude;
-        data["locationALongitude"] = this.locationALongitude;
-        data["locationBLatitude"] = this.locationBLatitude;
-        data["locationBLongitude"] = this.locationBLongitude;
+        data["initialLatitude"] = this.initialLatitude;
+        data["initialLongitude"] = this.initialLongitude;
+        data["targetLatitude"] = this.targetLatitude;
+        data["targetLongitude"] = this.targetLongitude;
         data["unit"] = this.unit;
         data["method"] = this.method;
         return data;
@@ -193,10 +193,10 @@ export class CalculateGeoDistanceRequest implements ICalculateGeoDistanceRequest
 }
 
 export interface ICalculateGeoDistanceRequest {
-    locationALatitude: number;
-    locationALongitude: number;
-    locationBLatitude: number;
-    locationBLongitude: number;
+    initialLatitude: number;
+    initialLongitude: number;
+    targetLatitude: number;
+    targetLongitude: number;
     unit: DistanceUnit;
     method: GeoDistanceCalculationMethod;
 }

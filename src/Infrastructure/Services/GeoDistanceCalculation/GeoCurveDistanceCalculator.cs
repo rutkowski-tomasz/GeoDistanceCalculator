@@ -9,11 +9,11 @@ public class GeoCurveDistanceCalculator : IGeoDistanceCalculator
 {
     public GeoDistanceCalculationMethod Method => GeoDistanceCalculationMethod.GeoCurve;
     
-    public async Task<Distance> CalculateDistanceAsync(GeoLocation locationA, GeoLocation locationB)
+    public async Task<Distance> CalculateDistanceAsync(GeoLocation initialLocation, GeoLocation targetLocation)
     {
-        var a = DegreesToRadians(90 - locationB.Latitude.Value);
-        var b = DegreesToRadians(90 - locationA.Latitude.Value);
-        var fi = DegreesToRadians(locationA.Longitude.Value - locationB.Longitude.Value);
+        var a = DegreesToRadians(90 - targetLocation.Latitude.Value);
+        var b = DegreesToRadians(90 - initialLocation.Latitude.Value);
+        var fi = DegreesToRadians(initialLocation.Longitude.Value - targetLocation.Longitude.Value);
 
         var acos = Math.Acos(Math.Cos(a) * Math.Cos(b) + Math.Sin(a) * Math.Sin(b) * Math.Cos(fi));
         var distanceValue = acos * GeoConstants.EarthRadius;

@@ -4,8 +4,6 @@ using Domain.Entities;
 using Domain.Enums;
 using Domain.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
-using NJsonSchema;
-using NSwag;
 using NSwag.Annotations;
 using NSwag.Generation.Processors;
 using NSwag.Generation.Processors.Contexts;
@@ -14,10 +12,10 @@ namespace Application.Endpoints.GeoDistance;
 
 public class CalculateGeoDistanceRequest
 {
-    public double LocationALatitude { get; set; }
-    public double LocationALongitude { get; set; }
-    public double LocationBLatitude { get; set; }
-    public double LocationBLongitude { get; set; }
+    public double InitialLatitude { get; set; }
+    public double InitialLongitude { get; set; }
+    public double TargetLatitude { get; set; }
+    public double TargetLongitude { get; set; }
     public DistanceUnit Unit { get; set; }
     public GeoDistanceCalculationMethod Method { get; set; }
 }
@@ -60,19 +58,19 @@ public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
     [OpenApiOperationProcessor(typeof(CalculateGeoDistanceEndpointProcessor))]
     public override async Task<CalculateGeoDistanceResponse> HandleAsync([FromBody] CalculateGeoDistanceRequest request, CancellationToken cancellationToken = new CancellationToken())
     {
-        var locationA = new GeoLocation
+        var initialLocation = new GeoLocation
         {
-            Latitude = Latitude.From(request.LocationALatitude),
-            Longitude = Longitude.From(request.LocationALongitude)
+            Latitude = Latitude.From(request.InitialLatitude),
+            Longitude = Longitude.From(request.InitialLongitude)
         };
         
-        var locationB = new GeoLocation
+        var targetLocation = new GeoLocation
         {
-            Latitude = Latitude.From(request.LocationBLatitude),
-            Longitude = Longitude.From(request.LocationBLongitude)
+            Latitude = Latitude.From(request.TargetLatitude),
+            Longitude = Longitude.From(request.TargetLongitude)
         };
         
-        var distance = await _distanceCalculationStrategy.CalculateDistanceAsync(locationA, locationB, request.Method);
+        var distance = await _distanceCalculationStrategy.CalculateDistanceAsync(initialLocation, targetLocation, request.Method);
         
         var convertedDistance = _distanceConversionService.Convert(distance, request.Unit);
         

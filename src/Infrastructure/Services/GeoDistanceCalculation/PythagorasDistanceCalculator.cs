@@ -9,10 +9,10 @@ public class PythagorasDistanceCalculator : IGeoDistanceCalculator
 {
     public GeoDistanceCalculationMethod Method => GeoDistanceCalculationMethod.Pythagoras;
     
-    public async Task<Distance> CalculateDistanceAsync(GeoLocation locationA, GeoLocation locationB)
+    public async Task<Distance> CalculateDistanceAsync(GeoLocation initialLocation, GeoLocation targetLocation)
     {
-        var eastWestDelta = DegreesToRadians(locationB.Longitude.Value - locationA.Longitude.Value) * Math.Cos(DegreesToRadians(locationA.Latitude.Value));
-        var northSouthDelta = DegreesToRadians(90 - locationB.Latitude.Value) - DegreesToRadians(90 - locationA.Latitude.Value);
+        var eastWestDelta = DegreesToRadians(targetLocation.Longitude.Value - initialLocation.Longitude.Value) * Math.Cos(DegreesToRadians(initialLocation.Latitude.Value));
+        var northSouthDelta = DegreesToRadians(90 - targetLocation.Latitude.Value) - DegreesToRadians(90 - initialLocation.Latitude.Value);
 
         var distanceValue = Math.Sqrt(eastWestDelta * eastWestDelta + northSouthDelta * northSouthDelta) * GeoConstants.EarthRadius;
         
