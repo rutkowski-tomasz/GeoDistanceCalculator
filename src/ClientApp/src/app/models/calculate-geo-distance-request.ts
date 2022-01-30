@@ -1,4 +1,4 @@
-import { DistanceUnit } from "./distance-unit.enum";
+import { DistanceUnit } from './distance-unit.enum';
 
 export class CalculateGeoDistanceRequest {
 

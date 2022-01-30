@@ -1,8 +1,8 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { CalculateGeoDistanceRequest } from "../models/calculate-geo-distance-request";
-import { CalculateGeoDistanceResponse } from "../models/calculate-geo-distance-response";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CalculateGeoDistanceRequest } from '../models/calculate-geo-distance-request';
+import { CalculateGeoDistanceResponse } from '../models/calculate-geo-distance-response';
 
 @Injectable({
     providedIn: 'root',

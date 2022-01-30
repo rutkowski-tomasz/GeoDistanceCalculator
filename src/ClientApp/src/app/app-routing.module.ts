@@ -4,7 +4,7 @@ import { GeoDistanceCalculateComponent } from './geo-distance-calculate/geo-dist
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: GeoDistanceCalculateComponent
   }
 ];
