@@ -22,7 +22,7 @@ jobs:
       run: dotnet restore src/Api/Api.csproj
 
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build src/Api/Api.csproj --no-restore
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test src/Api/Api.csproj --no-build --verbosity normal
