@@ -16,6 +16,7 @@ public static class DependencyInjection
         services.AddTransient<IGeoDistanceCalculator, PythagorasDistanceCalculator>();
         services.AddTransient<IGeoDistanceCalculator, ThreeDimensionPointDistanceCalculator>();
         services.AddTransient<IDistanceConversionService, DistanceConversionService>();
+        services.AddTransient<IGeoDistanceCalculationStrategy, GeoDistanceCalculationStrategy>();
 
         return services;
     }

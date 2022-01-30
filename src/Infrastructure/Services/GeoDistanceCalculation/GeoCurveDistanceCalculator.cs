@@ -7,6 +7,8 @@ namespace Infrastructure.Services.GeoDistanceCalculation;
 
 public class GeoCurveDistanceCalculator : IGeoDistanceCalculator
 {
+    public GeoDistanceCalculationMethod Method => GeoDistanceCalculationMethod.GeoCurve;
+    
     public async Task<Distance> CalculateDistanceAsync(GeoLocation locationA, GeoLocation locationB)
     {
         var a = DegreesToRadians(90 - locationB.Latitude.Value);

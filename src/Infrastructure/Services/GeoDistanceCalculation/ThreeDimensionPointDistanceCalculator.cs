@@ -6,7 +6,9 @@ using Domain.Enums;
 
 namespace Infrastructure.Services.GeoDistanceCalculation;
 
-public class ThreeDimensionPointDistanceCalculator : IGeoDistanceCalculator {
+public class ThreeDimensionPointDistanceCalculator : IGeoDistanceCalculator
+{
+    public GeoDistanceCalculationMethod Method => GeoDistanceCalculationMethod.ThreeDimensionPoint;
     
     public async Task<Distance> CalculateDistanceAsync(GeoLocation locationA, GeoLocation locationB)
     {
@@ -18,8 +20,9 @@ public class ThreeDimensionPointDistanceCalculator : IGeoDistanceCalculator {
 
         var distance = Distance.From(distanceValue, DistanceUnit.Kilometer);
 
-        return distance;
+        return await Task.FromResult(distance);
     }
+
 
     private Vector3 CalculatePositionVector(GeoLocation location)
     {

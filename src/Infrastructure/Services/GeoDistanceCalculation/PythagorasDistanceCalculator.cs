@@ -7,6 +7,8 @@ namespace Infrastructure.Services.GeoDistanceCalculation;
 
 public class PythagorasDistanceCalculator : IGeoDistanceCalculator
 {
+    public GeoDistanceCalculationMethod Method => GeoDistanceCalculationMethod.Pythagoras;
+    
     public async Task<Distance> CalculateDistanceAsync(GeoLocation locationA, GeoLocation locationB)
     {
         var eastWestDelta = DegreesToRadians(locationB.Longitude.Value - locationA.Longitude.Value) * Math.Cos(DegreesToRadians(locationA.Latitude.Value));
@@ -20,7 +22,7 @@ public class PythagorasDistanceCalculator : IGeoDistanceCalculator
             Value = distanceValue
         };
         
-        return distance;
+        return await Task.FromResult(distance);
     }
 
     private double DegreesToRadians(double degrees)
