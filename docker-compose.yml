@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  geodistancecalculator-webapi:
+    image: geodistancecalculator-webapi
+    container_name: geodistancecalculator-webapi
+    build:
+      context: .
+      dockerfile: src/Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=Your_password123
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ~/.aspnet/https:/https:ro
+    ports:
+      - target: 80
+        published: 5023
+      - target: 443
+        published: 7023
+
+  geodistancecalculator-clientapp:
+    image: geodistancecalculator-clientapp
+    container_name: geodistancecalculator-clientapp
+    build: src/ClientApp
+    ports:
+      - target: 80
+        published: 4200

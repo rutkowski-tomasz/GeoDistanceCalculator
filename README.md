@@ -3,6 +3,9 @@
 - [API base location](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/tree/main/src/Api)
 - [Client base location](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/tree/main/src/ClientApp)
 
+dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\geodistancecalculator-webapi.pfx -p rfC3gyLnUrbV
+dotnet dev-certs https --trust
+
 ## Project requirements
 - .NET 6 SDK 6.0.101
 - Docker 20.10.11
@@ -19,6 +22,19 @@ Web API and client application are separate projects and should be started separ
 2. Web API
    1. Navigate to `src/Api/`
    2. Run `dotnet run`
+
+## Project docker startup
+
+1. Add temporary SSL cert
+```sh
+# Windows
+dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p Your_password123
+dotnet dev-certs https --trust
+# Unix
+dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p Your_password123
+dotnet dev-certs https --trust
+```
+2. Start docker-compose (`docker-compose up` at root directory)
 
 ## Backend package dependencies
 - [ApiEndpoints](https://github.com/ardalis/ApiEndpoints)
