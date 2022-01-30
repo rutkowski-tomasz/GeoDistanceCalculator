@@ -1,18 +1,26 @@
 ﻿using Application.Common.Interfaces;
 using Domain.Constants;
 using Domain.Entities;
+using Domain.Enums;
 
 namespace Infrastructure.Services;
 
 public class GeoCurveDistanceService : IGeoDistanceService
 {
-    public async Task<double> CalculateDistanceAsync(GeoLocation locationA, GeoLocation locationB)
+    public async Task<Distance> CalculateDistanceAsync(GeoLocation locationA, GeoLocation locationB)
     {
         var a = DegreesToRadians(90 - locationB.Latitude.Value);
         var b = DegreesToRadians(90 - locationA.Latitude.Value);
         var fi = DegreesToRadians(locationA.Longitude.Value - locationB.Longitude.Value);
 
-        var distance = Math.Acos(Math.Cos(a) * Math.Cos(b) + Math.Sin(a) * Math.Sin(b) * Math.Cos(fi)) * GeoConstants.EarthRadius;
+        var acos = Math.Acos(Math.Cos(a) * Math.Cos(b) + Math.Sin(a) * Math.Sin(b) * Math.Cos(fi));
+        var distanceValue = acos * GeoConstants.EarthRadius;
+
+        var distance = new Distance
+        {
+            Unit = DistanceUnit.Kilometer,
+            Value = distanceValue
+        };
         
         return await Task.FromResult(distance);
     }

@@ -33,6 +33,6 @@ public class GeoCurveDistanceServiceTests : IClassFixture<GeoCurveDistanceServic
 
         var distance = await _geoCurveDistanceService.CalculateDistanceAsync(locationA, locationB);
 
-        distance.Should().BeApproximately(5536, 1);
+        distance.Value.Should().BeApproximately(5536, 1);
     }
 }
