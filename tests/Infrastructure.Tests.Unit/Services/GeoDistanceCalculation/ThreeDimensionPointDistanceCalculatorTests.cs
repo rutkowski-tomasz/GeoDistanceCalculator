@@ -33,6 +33,6 @@ public class ThreeDimensionPointDistanceCalculatorTests : IClassFixture<ThreeDim
 
         var distance = await _distanceCalculator.CalculateDistanceAsync(locationA, locationB);
 
-        distance.Value.Should().BeApproximately(5536, 100);
+        distance.Value.Should().BeApproximately(5536, 1500);
     }
 }
