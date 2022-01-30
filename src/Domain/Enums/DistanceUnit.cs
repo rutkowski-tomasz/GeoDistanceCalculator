@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Domain.Enums;
+﻿namespace Domain.Enums;
 
 public enum DistanceUnit
 {

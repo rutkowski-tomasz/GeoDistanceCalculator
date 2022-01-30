@@ -1,4 +1,5 @@
-﻿using Infrastructure;
+﻿using System.Text.Json.Serialization;
+using Infrastructure;
 
 namespace Api;
 
@@ -13,7 +14,12 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllers();
+        services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
+        
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(options =>
         {

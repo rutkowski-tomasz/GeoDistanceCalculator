@@ -14,7 +14,6 @@ public class CalculateGeoDistanceRequest
     public double LocationALongitude { get; set; }
     public double LocationBLatitude { get; set; }
     public double LocationBLongitude { get; set; }
-    
     public DistanceUnit Unit { get; set; }
 }
 
