@@ -1,6 +1,7 @@
 # GeoDistanceCalculator
 
 [![.NET](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/dotnet.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/dotnet.yml)
+[![Client Application](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml)
 
 - [API base location](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/tree/main/src/Api)
 - [Client base location](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/tree/main/src/ClientApp)
