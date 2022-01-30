@@ -3,9 +3,6 @@
 - [API base location](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/tree/main/src/Api)
 - [Client base location](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/tree/main/src/ClientApp)
 
-dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\geodistancecalculator-webapi.pfx -p rfC3gyLnUrbV
-dotnet dev-certs https --trust
-
 ## Project requirements
 - .NET 6 SDK 6.0.101
 - Docker 20.10.11
@@ -40,6 +37,8 @@ dotnet dev-certs https --trust
 - [ApiEndpoints](https://github.com/ardalis/ApiEndpoints)
 - [FluentAssertions](https://fluentassertions.com/)
 - [ValueOf](https://github.com/mcintyre321/ValueOf)
+- [UnitsNet](https://github.com/angularsen/UnitsNet)
+- [AutoMapper](https://automapper.org/)
 
 ## Frontend package dependencies
 - [Angular Material](https://material.angular.io/)
@@ -65,5 +64,5 @@ dotnet dev-certs https --trust
 14. ~~Write starting instructions~~
 15. ~~Enable swagger~~
 16. ~~Implement mappers~~
-17. Integrate with docker-compose for single command project startup
+17. ~~Integrate with docker-compose for single command project startup~~
 18. Generate API client for angular on build
