@@ -11,4 +11,8 @@
       <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="UnitsNet" Version="4.116.0" />
+    </ItemGroup>
+
 </Project>
