@@ -21,9 +21,14 @@ public class Startup
             });
         
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen(options =>
+        services.AddSwaggerDocument(settings =>
         {
-            options.EnableAnnotations();
+            settings.PostProcess = document =>
+            {
+                document.Info.Version = "v1";
+                document.Info.Title = "GeoDistanceCalculator API";
+                document.Info.Description = "GeoDistanceCalculator API";
+            };
         });
         services.AddCors();
         services.AddInfrastructure();
@@ -33,8 +38,8 @@ public class Startup
     {
         if (env.IsDevelopment())
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
             
             app.UseCors(builder => builder
                 .AllowAnyMethod()
