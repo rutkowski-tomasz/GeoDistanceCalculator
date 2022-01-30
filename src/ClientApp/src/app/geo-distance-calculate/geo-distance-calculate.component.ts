@@ -4,6 +4,8 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, debounceTime, filter, map, startWith, switchMap } from 'rxjs/operators';
 import { HttpRequestState } from '../common/http-request-state';
 import { CalculateGeoDistanceRequest } from '../models/calculate-geo-distance-request';
+import { CalculateGeoDistanceResponse } from '../models/calculate-geo-distance-response';
+import { DistanceUnit } from '../models/distance-unit.enum';
 import { GeoDistanceClientService } from '../services/geo-distance-client.service';
 
 @Component({
@@ -14,7 +16,7 @@ import { GeoDistanceClientService } from '../services/geo-distance-client.servic
 export class GeoDistanceCalculateComponent implements OnInit {
 
     public geoDistanceForm: FormGroup;
-    public distance$: Observable<HttpRequestState<number>>;
+    public distance$: Observable<HttpRequestState<CalculateGeoDistanceResponse>>;
     public isLoading$ = new BehaviorSubject<boolean>(false);
 
     constructor(
@@ -28,6 +30,7 @@ export class GeoDistanceCalculateComponent implements OnInit {
             locationALongitude: new FormControl(-6.372663, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
             locationBLatitude: new FormControl(41.385101, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
             locationBLongitude: new FormControl(-81.440440, [Validators.required, Validators.pattern(/^\-?\d+(\.\d+)?$/)]),
+            unit: new FormControl(DistanceUnit.Kilometer, [Validators.required])
         });
 
         this.distance$ = this.geoDistanceForm.valueChanges.pipe(
@@ -51,6 +54,7 @@ export class GeoDistanceCalculateComponent implements OnInit {
         request.locationALongitude = parseFloat(formValues.locationALongitude);
         request.locationBLatitude = parseFloat(formValues.locationBLatitude);
         request.locationBLongitude = parseFloat(formValues.locationBLongitude);
+        request.unit = formValues.unit;
 
         return request;
     }
