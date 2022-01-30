@@ -6,9 +6,10 @@ Example full-stack application demonstrator. It consists of REST API created wit
 
 ![client-app](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/blob/main/showcase/client-app.png)
 
-There are 2 possible ways to start the project:
-- [Docker-compose setup](https://github.com/rutkowski-tomasz/GeoDistanceCalculator#project-docker-startup) (recommended - single-command start)
-- [Development setup](https://github.com/rutkowski-tomasz/GeoDistanceCalculator#project-development-startup)
+There are 3 possible ways to start the project:
+- [Docker-compose start](https://github.com/rutkowski-tomasz/GeoDistanceCalculator#project-docker-compose-startup) (recommended - single-command start)
+- [Development start](https://github.com/rutkowski-tomasz/GeoDistanceCalculator#project-development-startup)
+- [Kubernetes start](https://github.com/rutkowski-tomasz/GeoDistanceCalculator#project-kubernetes-startup)
 
 Access the client application at: `http://localhost:4200/`.
 Reach the web API swagger at: `https://localhost:7023/swagger/index.html`
