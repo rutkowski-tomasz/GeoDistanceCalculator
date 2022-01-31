@@ -52,7 +52,9 @@ dotnet dev-certs https --trust
 
 ## Project kubernetes startup
 
-Note: If you only want to start the solution without pushing new images you should omit 2-4 steps from below list
+✅ If you only want to start the solution without pushing new images you should omit 2-4 steps from below list
+
+🌶 To fully deploy to kubernetes and communicate with the pods, an ingress controller should be created. Also the HTTPS communcation issue should be resolved with registering domain and installing certbot.
 
 1. Set **DOCKER_REGISTRY** env variable `export DOCKER_REGISTRY=rutkowski/`
 2. Login to repository `docker login`
@@ -69,6 +71,7 @@ Registries: [Web API](https://hub.docker.com/repository/docker/rutkowski/geodist
 - [FluentAssertions](https://fluentassertions.com/)
 - [Moq](https://github.com/moq/moq4)
 - [NSwag](https://github.com/RicoSuter/NSwag)
+- [ReportGenerator](https://github.com/danielpalme/ReportGenerator)
 - [UnitsNet](https://github.com/angularsen/UnitsNet)
 - [ValueOf](https://github.com/mcintyre321/ValueOf)
 
@@ -101,7 +104,5 @@ Registries: [Web API](https://hub.docker.com/repository/docker/rutkowski/geodist
 18. ~~Generate API client for angular on build~~
 19. ~~Add code coverage tool~~
 20. ~~Add project description~~
-21. Add HTTPS support for nginx container
-22. Add HTTPS support for kubernetes deployment
-23. Add fluent validation for request models
-24. ~~Improve code coverage~~
+21. Add fluent validation for request models
+22. ~~Improve code coverage~~
