@@ -8,7 +8,7 @@ using FluentValidation;
 using Moq;
 using Xunit;
 
-namespace Application.Tests.Unit.Endpoints.GeoDistance;
+namespace Application.Tests.Unit.GeoDistance.Calculate;
 
 public class CalculateGeoDistanceEndpointTests
 {
