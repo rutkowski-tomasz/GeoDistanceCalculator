@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Application;
 using Infrastructure;
 
 namespace Api;
@@ -49,6 +50,7 @@ public class Startup
         }
 
         app.UseHttpsRedirection();
+        app.UseApplication();
 
         app.UseRouting();
         app.UseAuthorization();
