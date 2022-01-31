@@ -34,6 +34,7 @@ public class Startup
             };
         });
         services.AddCors();
+        services.AddApplication();
         services.AddInfrastructure();
     }
 
