@@ -1,31 +1,14 @@
 ﻿using Application.Common.Interfaces;
 using Ardalis.ApiEndpoints;
 using Domain.Entities;
-using Domain.Enums;
 using Domain.ValueObjects;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using NSwag.Generation.Processors;
 using NSwag.Generation.Processors.Contexts;
 
-namespace Application.Endpoints.GeoDistance;
-
-public class CalculateGeoDistanceRequest
-{
-    public double InitialLatitude { get; set; }
-    public double InitialLongitude { get; set; }
-    public double TargetLatitude { get; set; }
-    public double TargetLongitude { get; set; }
-    public DistanceUnit Unit { get; set; }
-    public GeoDistanceCalculationMethod Method { get; set; }
-}
-
-public class CalculateGeoDistanceResponse
-{
-    public double Value { get; set; }
-    public DistanceUnit Unit { get; set; }
-    public GeoDistanceCalculationMethod Method { get; set; }
-}
+namespace Application.GeoDistance.Calculate;
 
 public class CalculateGeoDistanceEndpointProcessor : IOperationProcessor
 {
@@ -43,14 +26,17 @@ public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
 {
     private readonly IGeoDistanceCalculationStrategy _distanceCalculationStrategy;
     private readonly IDistanceConversionService _distanceConversionService;
+    private readonly IValidator<CalculateGeoDistanceRequest> _validator;
 
     public CalculateGeoDistanceEndpoint(
         IGeoDistanceCalculationStrategy distanceCalculationStrategy,
-        IDistanceConversionService distanceConversionService
+        IDistanceConversionService distanceConversionService,
+        IValidator<CalculateGeoDistanceRequest> validator
     )
     {
         _distanceCalculationStrategy = distanceCalculationStrategy;
         _distanceConversionService = distanceConversionService;
+        _validator = validator;
     }
 
     [HttpPost("geo-distance/calculate")]
@@ -58,6 +44,8 @@ public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
     [OpenApiOperationProcessor(typeof(CalculateGeoDistanceEndpointProcessor))]
     public override async Task<CalculateGeoDistanceResponse> HandleAsync([FromBody] CalculateGeoDistanceRequest request, CancellationToken cancellationToken = new CancellationToken())
     {
+        await _validator.ValidateAndThrowAsync(request, cancellationToken);
+        
         var initialLocation = new GeoLocation
         {
             Latitude = Latitude.From(request.InitialLatitude),
