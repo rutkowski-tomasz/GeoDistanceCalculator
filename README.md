@@ -105,5 +105,7 @@ Registries: [Web API](https://hub.docker.com/repository/docker/rutkowski/geodist
 18. ~~Generate API client for angular on build~~
 19. ~~Add code coverage tool~~
 20. ~~Add project description~~
-21. Add fluent validation for request models
+21. ~~Add fluent validation for request models~~
 22. ~~Improve code coverage~~
+23. Implement logger (Serilog)
+24. Create custom model for all WebApi responses
