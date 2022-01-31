@@ -26,12 +26,6 @@ jobs:
 
     - name: Test
       run: dotnet test GeoDistanceCalculator.sln /p:CollectCoverage=true /p:CoverletOutput=TestResults/
-
-    - name: Publish coverage report to coveralls.io
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: tests/TestResults/coverage.info 
         
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@5.0.3
