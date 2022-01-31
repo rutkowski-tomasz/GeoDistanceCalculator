@@ -69,6 +69,7 @@ Registries: [Web API](https://hub.docker.com/repository/docker/rutkowski/geodist
 - [AutoMapper](https://automapper.org/)
 - [Coverlet](https://github.com/coverlet-coverage/coverlet)
 - [FluentAssertions](https://fluentassertions.com/)
+- [FluentValidation](https://fluentvalidation.net/)
 - [Moq](https://github.com/moq/moq4)
 - [NSwag](https://github.com/RicoSuter/NSwag)
 - [ReportGenerator](https://github.com/danielpalme/ReportGenerator)

@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <PackageReference Include="Ardalis.ApiEndpoints" Version="4.0.1" />
+      <PackageReference Include="FluentValidation" Version="10.3.6" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
       <PackageReference Include="NSwag.Annotations" Version="13.15.5" />
       <PackageReference Include="NSwag.Generation" Version="13.15.5" />
