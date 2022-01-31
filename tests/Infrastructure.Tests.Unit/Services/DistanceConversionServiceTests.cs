@@ -1,19 +1,32 @@
-﻿using Domain.Entities;
+﻿using AutoMapper;
+using Domain.Entities;
 using Domain.Enums;
 using FluentAssertions;
 using Infrastructure.Services;
+using Moq;
+using UnitsNet.Units;
 using Xunit;
 
 namespace Infrastructure.Tests.Unit.Services;
 
 
-public class DistanceConversionServiceTests : IClassFixture<DistanceConversionService>
+public class DistanceConversionServiceTests
 {
     private readonly DistanceConversionService _geoCurveDistanceService;
 
-    public DistanceConversionServiceTests(DistanceConversionService geoCurveDistanceService)
+    public DistanceConversionServiceTests()
     {
-        _geoCurveDistanceService = geoCurveDistanceService;
+        var mapperMock = new Mock<IMapper>();
+        
+        mapperMock
+            .Setup(x => x.Map<LengthUnit>(DistanceUnit.Kilometer))
+            .Returns(LengthUnit.Kilometer);
+
+        mapperMock
+            .Setup(x => x.Map<LengthUnit>(DistanceUnit.Mile))
+            .Returns(LengthUnit.Mile);
+            
+        _geoCurveDistanceService = new DistanceConversionService(mapperMock.Object);
     }
 
     [Fact]

@@ -63,11 +63,13 @@ Registries: [Web API](https://hub.docker.com/repository/docker/rutkowski/geodist
 
 ## Backend package dependencies
 - [ApiEndpoints](https://github.com/ardalis/ApiEndpoints)
-- [FluentAssertions](https://fluentassertions.com/)
-- [ValueOf](https://github.com/mcintyre321/ValueOf)
-- [UnitsNet](https://github.com/angularsen/UnitsNet)
 - [AutoMapper](https://automapper.org/)
+- [Coverlet](https://github.com/coverlet-coverage/coverlet)
+- [FluentAssertions](https://fluentassertions.com/)
+- [Moq](https://github.com/moq/moq4)
 - [NSwag](https://github.com/RicoSuter/NSwag)
+- [UnitsNet](https://github.com/angularsen/UnitsNet)
+- [ValueOf](https://github.com/mcintyre321/ValueOf)
 
 ## Frontend package dependencies
 - [Angular Material](https://material.angular.io/)
