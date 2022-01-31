@@ -1,5 +1,6 @@
 [![Web API](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/web-api.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/web-api.yml)
 [![Client Application](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml)
+[![Coverage Status](https://coveralls.io/repos/github/rutkowski-tomasz/GeoDistanceCalculator/badge.svg?branch=main)](https://coveralls.io/github/rutkowski-tomasz/GeoDistanceCalculator?branch=main)
 
 # GeoDistanceCalculator
 Example full-stack application demonstrator. It consists of REST API created with .NET and C# and frontend application created with Angular.
