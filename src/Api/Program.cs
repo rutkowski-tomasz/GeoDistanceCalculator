@@ -1,5 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Api;
 
+[ExcludeFromCodeCoverage]
 public class Program
 {
     public async static Task Main(string[] args)
