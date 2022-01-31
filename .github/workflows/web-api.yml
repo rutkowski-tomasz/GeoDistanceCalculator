@@ -27,16 +27,22 @@ jobs:
     - name: Test
       run: dotnet test GeoDistanceCalculator.sln /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=cobertura
         
-    # Run locally: reportgenerator -reports:'**/TestResults/coverage.cobertura.xml' -targetdir:tests/TestResults/CoverageReport -reporttypes:'Badges;HtmlInline'
-    - name: ReportGenerator
+    # Run locally: reportgenerator -reports:'**/TestResults/coverage.cobertura.xml' -targetdir:tests/TestResults/CoverageReport -reporttypes:'Badges;HtmlInline;lcov'
+    - name: Generate coverage report
       uses: danielpalme/ReportGenerator-GitHub-Action@5.0.3
       with:
         reports: '**/TestResults/coverage.cobertura.xml'
         targetdir: 'tests/TestResults/CoverageReport'
-        reporttypes: 'Badges;HtmlInline'
+        reporttypes: 'Badges;HtmlInline;lcov'
       
     - name: Upload coverage report artifact
       uses: actions/upload-artifact@v2.2.3
       with:
         name: CoverageReport        
         path: tests/TestResults/CoverageReport
+
+    - name: Publish coverage report to coveralls.io
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: tests/TestResults/CoverageReport/lcov.info
