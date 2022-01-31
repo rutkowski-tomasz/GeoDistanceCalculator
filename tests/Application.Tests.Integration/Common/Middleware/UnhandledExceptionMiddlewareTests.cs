@@ -19,7 +19,7 @@ public class UnhandledExceptionMiddlewareTests
     [Fact]
     public async Task ShouldReturnInternalServerErrorForUnhandedException()
     {
-        using var host = await CreateHost(app =>
+        using var host = await TestHostFactory.CreateHost(app =>
         {
             app.Run(_ => throw new Exception("Unhandled exception"));
         });
@@ -36,7 +36,7 @@ public class UnhandledExceptionMiddlewareTests
     [Fact]
     public async Task ShouldReturnUnmodifiedContentWhenNoExceptionsOccur()
     {
-        using var host = await CreateHost(app =>
+        using var host = await TestHostFactory.CreateHost(app =>
         {
             app.Run(x => x.Response.WriteAsync("Hello World!"));
         });
@@ -46,21 +46,5 @@ public class UnhandledExceptionMiddlewareTests
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
         content.Should().Be("Hello World!");
-    }
-
-    private static async Task<IHost> CreateHost(Action<IApplicationBuilder> handleRequest)
-    {
-        return await new HostBuilder()
-            .ConfigureWebHost(webBuilder =>
-            {
-                webBuilder
-                    .UseTestServer()
-                    .Configure(app =>
-                    {
-                        app.UseApplication();
-                        handleRequest(app);
-                    });
-            })
-            .StartAsync();
     }
 }
