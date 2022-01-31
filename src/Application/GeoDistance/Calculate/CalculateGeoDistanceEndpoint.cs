@@ -1,31 +1,13 @@
 ﻿using Application.Common.Interfaces;
 using Ardalis.ApiEndpoints;
 using Domain.Entities;
-using Domain.Enums;
 using Domain.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using NSwag.Generation.Processors;
 using NSwag.Generation.Processors.Contexts;
 
-namespace Application.Endpoints.GeoDistance;
-
-public class CalculateGeoDistanceRequest
-{
-    public double InitialLatitude { get; set; }
-    public double InitialLongitude { get; set; }
-    public double TargetLatitude { get; set; }
-    public double TargetLongitude { get; set; }
-    public DistanceUnit Unit { get; set; }
-    public GeoDistanceCalculationMethod Method { get; set; }
-}
-
-public class CalculateGeoDistanceResponse
-{
-    public double Value { get; set; }
-    public DistanceUnit Unit { get; set; }
-    public GeoDistanceCalculationMethod Method { get; set; }
-}
+namespace Application.GeoDistance.Calculate;
 
 public class CalculateGeoDistanceEndpointProcessor : IOperationProcessor
 {

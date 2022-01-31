@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Application.Common.Interfaces;
-using Application.Endpoints.GeoDistance;
+using Application.GeoDistance.Calculate;
 using Domain.Entities;
 using Domain.Enums;
 using FluentAssertions;
