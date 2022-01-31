@@ -1,5 +1,6 @@
 [![Web API](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/web-api.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/web-api.yml)
 [![Client Application](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml/badge.svg)](https://github.com/rutkowski-tomasz/GeoDistanceCalculator/actions/workflows/client-app.yml)
+[![Coverage Status](https://coveralls.io/repos/github/rutkowski-tomasz/GeoDistanceCalculator/badge.svg?branch=main)](https://coveralls.io/github/rutkowski-tomasz/GeoDistanceCalculator?branch=main)
 
 # GeoDistanceCalculator
 Example full-stack application demonstrator. It consists of REST API created with .NET and C# and frontend application created with Angular.
@@ -63,11 +64,13 @@ Registries: [Web API](https://hub.docker.com/repository/docker/rutkowski/geodist
 
 ## Backend package dependencies
 - [ApiEndpoints](https://github.com/ardalis/ApiEndpoints)
-- [FluentAssertions](https://fluentassertions.com/)
-- [ValueOf](https://github.com/mcintyre321/ValueOf)
-- [UnitsNet](https://github.com/angularsen/UnitsNet)
 - [AutoMapper](https://automapper.org/)
+- [Coverlet](https://github.com/coverlet-coverage/coverlet)
+- [FluentAssertions](https://fluentassertions.com/)
+- [Moq](https://github.com/moq/moq4)
 - [NSwag](https://github.com/RicoSuter/NSwag)
+- [UnitsNet](https://github.com/angularsen/UnitsNet)
+- [ValueOf](https://github.com/mcintyre321/ValueOf)
 
 ## Frontend package dependencies
 - [Angular Material](https://material.angular.io/)

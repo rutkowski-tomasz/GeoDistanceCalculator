@@ -19,10 +19,16 @@ jobs:
         dotnet-version: 6.0.x
 
     - name: Restore dependencies
-      run: dotnet restore src/Api/Api.csproj
+      run: dotnet restore GeoDistanceCalculator.sln
 
     - name: Build
-      run: dotnet build src/Api/Api.csproj --no-restore
+      run: dotnet build GeoDistanceCalculator.sln --no-restore
 
     - name: Test
-      run: dotnet test src/Api/Api.csproj --no-build --verbosity normal
+      run: dotnet test GeoDistanceCalculator.sln --logger:trx --results-directory ../TestResults /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:MergeWith=../TestResults/coverlet.info /p:CoverletOutputFormat=lcov
+
+    - name: Publish coverage report to coveralls.io
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: tests/TestResults/coverage.info 

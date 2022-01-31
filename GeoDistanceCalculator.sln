@@ -26,6 +26,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Tests.Unit",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Application\Application.csproj", "{22CD65BC-A1C6-493C-B119-3ABBB6ABBE10}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{BC724A00-A182-41F4-B451-C8482E95775F}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\client-app.yml = .github\workflows\client-app.yml
+		.github\workflows\web-api.yml = .github\workflows\web-api.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +73,7 @@ Global
 		{9089A224-0968-4F1E-B2B2-45624A75EC5B} = {20BD5FCC-5028-4949-AEE5-B76DEDF2169B}
 		{9501173D-2B61-4906-B9DC-F7962992AC78} = {20BD5FCC-5028-4949-AEE5-B76DEDF2169B}
 		{22CD65BC-A1C6-493C-B119-3ABBB6ABBE10} = {AC3021C9-1610-4C52-A789-5AA759DE7F3B}
+		{BC724A00-A182-41F4-B451-C8482E95775F} = {011A1D71-DB48-4905-ABF9-0D2D95D9D99B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D70C9EC-B9D6-4586-906F-E0301A78EFEA}
