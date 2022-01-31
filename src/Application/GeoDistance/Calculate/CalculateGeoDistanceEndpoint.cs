@@ -2,6 +2,7 @@
 using Ardalis.ApiEndpoints;
 using Domain.Entities;
 using Domain.ValueObjects;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using NSwag.Generation.Processors;
@@ -25,14 +26,17 @@ public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
 {
     private readonly IGeoDistanceCalculationStrategy _distanceCalculationStrategy;
     private readonly IDistanceConversionService _distanceConversionService;
+    private readonly IValidator<CalculateGeoDistanceRequest> _validator;
 
     public CalculateGeoDistanceEndpoint(
         IGeoDistanceCalculationStrategy distanceCalculationStrategy,
-        IDistanceConversionService distanceConversionService
+        IDistanceConversionService distanceConversionService,
+        IValidator<CalculateGeoDistanceRequest> validator
     )
     {
         _distanceCalculationStrategy = distanceCalculationStrategy;
         _distanceConversionService = distanceConversionService;
+        _validator = validator;
     }
 
     [HttpPost("geo-distance/calculate")]
@@ -40,6 +44,8 @@ public class CalculateGeoDistanceEndpoint : EndpointBaseAsync
     [OpenApiOperationProcessor(typeof(CalculateGeoDistanceEndpointProcessor))]
     public override async Task<CalculateGeoDistanceResponse> HandleAsync([FromBody] CalculateGeoDistanceRequest request, CancellationToken cancellationToken = new CancellationToken())
     {
+        await _validator.ValidateAndThrowAsync(request, cancellationToken);
+        
         var initialLocation = new GeoLocation
         {
             Latitude = Latitude.From(request.InitialLatitude),

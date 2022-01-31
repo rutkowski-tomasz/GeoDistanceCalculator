@@ -4,6 +4,7 @@ using Application.GeoDistance.Calculate;
 using Domain.Entities;
 using Domain.Enums;
 using FluentAssertions;
+using FluentValidation;
 using Moq;
 using Xunit;
 
@@ -19,10 +20,12 @@ public class CalculateGeoDistanceEndpointTests
     {
         _distanceCalculationStrategyMock = new Mock<IGeoDistanceCalculationStrategy>();
         _distanceConversionServiceMock = new Mock<IDistanceConversionService>();
+        var validator = new Mock<IValidator<CalculateGeoDistanceRequest>>();
 
         _endpoint = new CalculateGeoDistanceEndpoint(
             _distanceCalculationStrategyMock.Object,
-            _distanceConversionServiceMock.Object
+            _distanceConversionServiceMock.Object,
+            validator.Object
         );
     }
 
