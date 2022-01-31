@@ -19,7 +19,7 @@ public class GeoDistanceCalculationStrategy : IGeoDistanceCalculationStrategy
         GeoDistanceCalculationMethod method
     )
     {
-        var calculator =  _geoDistanceCalculators.First(x => x.Method == method);
+        var calculator = _geoDistanceCalculators.First(x => x.Method == method);
         var distance = await calculator.CalculateDistanceAsync(initialLocation, targetLocation);
 
         return await Task.FromResult(distance);

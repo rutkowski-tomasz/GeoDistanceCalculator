@@ -1,9 +1,11 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using Application;
 using Infrastructure;
 
 namespace Api;
 
+[ExcludeFromCodeCoverage]
 public class Startup
 {
     public IConfiguration Configuration { get; }
