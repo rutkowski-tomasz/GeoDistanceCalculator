@@ -25,10 +25,26 @@ jobs:
       run: dotnet build GeoDistanceCalculator.sln --no-restore
 
     - name: Test
-      run: dotnet test GeoDistanceCalculator.sln --logger:trx --results-directory ../TestResults /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:MergeWith=../TestResults/coverlet.info /p:CoverletOutputFormat=lcov
+      run: dotnet test GeoDistanceCalculator.sln /p:CollectCoverage=true /p:CoverletOutput=TestResults/
 
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: tests/TestResults/coverage.info 
+        
+    - name: ReportGenerator
+      uses: danielpalme/ReportGenerator-GitHub-Action@5.0.3
+      with:
+        reports: 'coverage.json'
+        targetdir: 'coveragereport'
+        reporttypes: 'Badges;HtmlInline'
+
+    - name: Print coverage files
+      run: ls -la coveragereport
+      
+    - name: Upload coverage report artifact
+      uses: actions/upload-artifact@v2.2.3
+      with:
+        name: CoverageReport        
+        path: coveragereport
