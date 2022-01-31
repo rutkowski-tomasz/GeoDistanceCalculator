@@ -99,8 +99,9 @@ Registries: [Web API](https://hub.docker.com/repository/docker/rutkowski/geodist
 16. ~~Implement mappers~~
 17. ~~Integrate with docker-compose for single command project startup~~
 18. ~~Generate API client for angular on build~~
-19. Add code coverage tool
+19. ~~Add code coverage tool~~
 20. ~~Add project description~~
 21. Add HTTPS support for nginx container
 22. Add HTTPS support for kubernetes deployment
 23. Add fluent validation for request models
+24. Improve code coverage
