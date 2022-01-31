@@ -25,10 +25,10 @@ jobs:
       run: dotnet build GeoDistanceCalculator.sln --no-restore
 
     - name: Test
-      run: dotnet test GeoDistanceCalculator.sln --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+      run: dotnet test GeoDistanceCalculator.sln --logger:trx --results-directory ../TestResults /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:MergeWith=../TestResults/coverlet.info /p:CoverletOutputFormat=lcov
 
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: TestResults/coverage.info 
+        path-to-lcov: tests/TestResults/coverage.info 
