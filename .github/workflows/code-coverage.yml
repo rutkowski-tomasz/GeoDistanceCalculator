@@ -18,13 +18,13 @@ jobs:
     - name: Test
       run: dotnet test GeoDistanceCalculator.sln /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=cobertura
 
-    # Run locally: reportgenerator -reports:'**/TestResults/coverage.cobertura.xml' -targetdir:tests/TestResults/CoverageReport -reporttypes:'Badges;HtmlInline;lcov;TextSummary'
+    # Run locally: reportgenerator -reports:'**/TestResults/coverage.cobertura.xml' -targetdir:tests/TestResults/CoverageReport -reporttypes:'HtmlInline;lcov;TextSummary'
     - name: Generate coverage report
       uses: danielpalme/ReportGenerator-GitHub-Action@5.0.3
       with:
         reports: '**/TestResults/coverage.cobertura.xml'
         targetdir: 'tests/TestResults/CoverageReport'
-        reporttypes: 'Badges;HtmlInline;lcov'
+        reporttypes: 'HtmlInline;lcov;TextSummary'
 
     - name: Print coverage summary
       run: cat tests/TestResults/CoverageReport/Summary.txt

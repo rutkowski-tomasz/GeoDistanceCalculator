@@ -104,4 +104,4 @@ Registries: [Web API](https://hub.docker.com/repository/docker/rutkowski/geodist
 21. Add HTTPS support for nginx container
 22. Add HTTPS support for kubernetes deployment
 23. Add fluent validation for request models
-24. Improve code coverage
+24. ~~Improve code coverage~~
