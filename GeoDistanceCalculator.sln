@@ -30,6 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\client-app.yml = .github\workflows\client-app.yml
 		.github\workflows\web-api.yml = .github\workflows\web-api.yml
+		.github\workflows\code-coverage.yml = .github\workflows\code-coverage.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests.Integration", "tests\Application.Tests.Integration\Application.Tests.Integration.csproj", "{66E00297-DF84-48E5-93E5-0BF141BB152F}"
