@@ -57,7 +57,7 @@ public class UnhandledExceptionMiddlewareTests
                     .UseTestServer()
                     .Configure(app =>
                     {
-                        app.UseMiddleware<UnhandledExceptionMiddleware>();
+                        app.UseApplication();
                         handleRequest(app);
                     });
             })
